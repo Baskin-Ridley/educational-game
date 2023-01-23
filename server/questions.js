@@ -2,8 +2,13 @@ const questions = [
     {
         "id": 1,
         "question": "qtext",
-        "answers": ["1", "2", "3", "4"],
-        "correct": "3"
+        "answers": [
+            {"text": "1", "correct": false},
+            {"text": "2", "correct": false},
+            {"text": "3", "correct": true},
+            {"text": "4", "correct": false},
+        ],
+        "category": "Maths"
     }
 ]
 
