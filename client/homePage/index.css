@@ -45,9 +45,28 @@ h1 {
 }
 
 #button {
-    background-color: blueviolet;
+    background-color: chartreuse;
     border: 5px;
     border-radius: 20px;
     height: 168px;
     width: 168px;
+}
+
+#record-board {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding-bottom: 20px;
+}
+
+#user-record {
+    height: 60px;
+    width: 250px;
+}
+
+#leader-board {
+    height: 60px;
+    width: 250px;
 }
