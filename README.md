@@ -1,7 +1,7 @@
 # educational-game
 
 ## Install
-`npm install cors express`, `npm install -D nodemon jest supertest`
+`npm install`
 
 ## Development
 `npm run dev`
