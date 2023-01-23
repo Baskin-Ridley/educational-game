@@ -13,6 +13,8 @@ function displayScore() {
     document.getElementById('scoreDisplay').innerText = score
 }
 
+
+
 function addQuestion() {
     fetch('http://localhost:3000/questions/random')
         .then(response => response.json())
@@ -58,7 +60,9 @@ function checkAnswer() {
             if (e.target.classList.contains('correct-answer')) {
                 score++
                 displayScore()
+                console.log(score)
             }
+            console.log("hello")
             document.getElementById("question").innerHTML = "";
 
             addQuestion()
@@ -70,5 +74,3 @@ function checkAnswer() {
 
 addQuestion()
 displayScore()
-
-module.exports = {addQuestion, checkAnswer, displayScore}
