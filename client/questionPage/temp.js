@@ -5,9 +5,7 @@ let temp = [
         "answers": ["Voltorb", "Pokeball", "Electrode", "A jigglypuff seen from above"],
         "correct": "3",
         "category": "Pokemon"
-
         },
-
         {
             "id": 2,
             "question": "qtext",
@@ -20,5 +18,4 @@ let temp = [
             "category": "Maths"
         }
     ]
-
     module.exports = temp
