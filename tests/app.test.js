@@ -1,6 +1,5 @@
 const app = require("../server/app");
 const request = require("supertest");
-//const { beforeAll } = require("jest-circus");
 const url = "http://localhost:3000";
 
 describe("GET /questions", () => {
@@ -120,4 +119,38 @@ describe("DELETE /questions/:id", () =>{
         const exists = questions.findIndex(q=>q.id==666);
         expect(exists).toBe(-1);
     });
+});
+
+describe("PATCH /questions/:id", () => {
+    const newQuestion = {
+        "id": 666,
+        "question": "This is a test",
+        "answers": [
+            { "text": "Test?", "correct": true },
+            { "text": "TEST!", "correct": false },
+            { "text": "test", "correct": false },
+            { "text": "t e s t", "correct": false },
+        ],
+        "category": "Test"
+    }
+    beforeAll(async () => {
+        await request(url).post("/questions").send(newQuestion);
+    });
+    afterAll(async () => {
+        await request(url).delete("/questions/666");
+    });
+    it("should update question if it exists", async () => {
+        const response = await request(url).patch("/questions/666").send({
+            "question": "This question has been patched",
+            "category": "Still test but different"
+        });
+        expect(response.statusCode).toBe(200);
+        expect(response.body.category).toBe("Still test but different");
+    });
+    it("should 404 if it doesn't exist", async () => {
+        const response = await request(url).patch("/question/654").send({
+            "category": "This won't work anyway"
+        })
+        expect(response.statusCode).toBe(404);
+    })
 });

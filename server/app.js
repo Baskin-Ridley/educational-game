@@ -91,9 +91,9 @@ app.patch("/questions/:id", (req, res) => {
     if (QIndex == -1) { res.sendStatus(404); return; };
 
     if (changes.question) { questions[QIndex].question = changes.question };
-    if (changes.answers)  { questions[QIndex].answers = changes.answers };
+    if (changes.answers)  { questions[QIndex].answers  = changes.answers };
     if (changes.category) { questions[QIndex].category = changes.category };
-    res.send(questions[QIndex]);
+    res.status(200).send(questions[QIndex]);
 
 })
 
