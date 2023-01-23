@@ -8,12 +8,14 @@ let temp = [
     ]
 
 let score = 0
+let clickable = true
 
 function displayScore() {
-    document.getElementById('scoreDisplay').innerText = score
+    let scoreDisplay = document.getElementById('scoreDisplay');
+    if(scoreDisplay){
+        scoreDisplay.innerText = score;
+    }
 }
-
-
 
 function addQuestion() {
     fetch('http://localhost:3000/questions/random')
@@ -57,15 +59,18 @@ function checkAnswer() {
     const answers = document.querySelectorAll('.answer')
     answers.forEach(answer => {
         answer.addEventListener('click', e => {
-            if (e.target.classList.contains('correct-answer')) {
-                score++
-                displayScore()
-                console.log(score)
+            if (clickable) {
+                if (e.target.classList.contains('correct-answer')) {
+                    score++
+                    displayScore()
+                }
+                clickable = false   
+                setTimeout(() => {
+                    document.getElementById("question").innerHTML = "";
+                    clickable = true
+                    addQuestion();
+                }, 1000); 
             }
-            console.log("hello")
-            document.getElementById("question").innerHTML = "";
-
-            addQuestion()
         })
     })
 }
@@ -74,3 +79,10 @@ function checkAnswer() {
 
 addQuestion()
 displayScore()
+
+module.exports = {
+    checkAnswer,
+    addQuestion,
+    displayScore,
+    score
+};
