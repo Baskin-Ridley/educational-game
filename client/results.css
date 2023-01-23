@@ -15,7 +15,7 @@ h1 {
     border-radius: 50px;
 }
     button {
-        display: inline-flex;
+        display: flex;
         justify-content: center;
         align-items: center;
         width: 400px;
@@ -24,4 +24,26 @@ h1 {
         margin: auto;
     
     }
+    #profile, #settings {
+        position: fixed;
+        top: 5px;
+        right: 0;
+    }
     
+    #settings {
+        top: 40px;
+        right: 0px;
+    }
+    
+    #profile-pic {
+        height: 30px;
+        width: 30px;
+        margin-right: 10px;
+    
+    }
+    
+    #settings-cog {
+        height: 25px;
+        width: 25px;
+        margin-right: 10px;
+    }
