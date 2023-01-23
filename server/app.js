@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const logger = require("./logger");
-let { questions, nextId } = require("./questions");
+let questions= require("./questions");
 
 const app = express();
 
@@ -41,12 +41,19 @@ app.get('/questions/:id', (req, res) => {
 
 app.post("/questions", (req, res) => {
     const newQ = req.body;
-    newQ["id"] = nextId;
-    nextId++;
-
-    questions.push(newQ);
-
-    res.status(201).send(newQ);
+    if(!newQ["id"]){
+        newQ["id"] = questions.length+1;
+        questions.push(newQ);
+        res.status(201).send(questions);
+    } else {
+        const check = questions.findIndex(x=>x["id"]==newQ["id"]);
+        if(check==-1){
+            questions.push(newQ);
+            res.status(201).send(questions);
+        } else {
+            res.status(400).send("That id is already in use.")
+        }
+    }
 })
 
 app.delete("/questions/:id", (req, res) => {
