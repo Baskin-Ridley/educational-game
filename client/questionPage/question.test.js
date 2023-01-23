@@ -17,10 +17,6 @@ describe("addQuestion", () => {
     })
 
 })
-/*
-test('addQuestion', () => {
-    expect(addQuestion).toBeDefined();
-});
 
 describe("checkAnswer", () => {
     
@@ -39,4 +35,4 @@ describe("displayScore", () => {
 
 }
 )
-*/
+
