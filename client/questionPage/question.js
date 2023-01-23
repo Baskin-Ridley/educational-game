@@ -70,3 +70,5 @@ function checkAnswer() {
 
 addQuestion()
 displayScore()
+
+module.exports = {addQuestion, checkAnswer, displayScore}
