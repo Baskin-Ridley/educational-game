@@ -65,6 +65,23 @@ app.delete("/questions/:id", (req, res)=>{
     }
 })
 
+app.patch("/questions/:id", (req, res)=>{
+    const id = req.params["id"];
+    const changes = req.body;
+    console.log(changes);
+
+    let oldQuestion = questions.filter(q => q["id"] == id);
+    if(oldQuestion.length==0){res.status(404).json({error:"No such question!"})};
+    
+    let changedQ = oldQuestion;
+    if (changes.question){changedQ[0].question=changes.question;console.log("Q CHANGE");}
+    if (changes.answers){changedQ[0].answers=changes.answers}
+    if (changes.category){changedQ[0].category=changes.category}
+    console.log(changedQ);
+    res.send(changedQ);
+
+})
+
 /*
 update
 */
