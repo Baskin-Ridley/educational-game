@@ -9,6 +9,9 @@ let temp = [
 
 let score = 0
 
+function displayScore() {
+    document.getElementById('scoreDisplay').innerText = score
+}
 
 function addQuestion() {
     
@@ -58,6 +61,7 @@ function checkAnswer() {
         answer.addEventListener('click', e => {
             if (e.target.innerText === temp[0].correct) {
                 score++
+                displayScore()
                 console.log(score)
             }
         })
@@ -67,3 +71,4 @@ function checkAnswer() {
 
 addQuestion()
 checkAnswer()
+displayScore()
