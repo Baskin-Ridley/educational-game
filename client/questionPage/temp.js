@@ -1,4 +1,4 @@
-const temp = [
+let temp = [
     {
         "id": 1,
         "question": "Who's that pokemon? (hint: it's a Jigglypuff)",
@@ -7,4 +7,4 @@ const temp = [
         }
     ]
 
-    module.exports = {temp}
+    module.exports = temp
