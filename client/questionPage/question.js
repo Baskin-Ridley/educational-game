@@ -44,6 +44,9 @@ function addQuestion() {
             card.appendChild(answers)
 
             document.getElementById('question').appendChild(card)
+            
+            checkAnswer()
+
         })
         .catch(error => console.log(error))
 }
@@ -54,11 +57,13 @@ function checkAnswer() {
     const answers = document.querySelectorAll('.answer')
     answers.forEach(answer => {
         answer.addEventListener('click', e => {
-            if (e.target.innerText.includes("true")) {
+            if (e.target.classList.contains('correct-answer')) {
                 score++
                 displayScore()
                 console.log(score)
             }
+            console.log("hello")
+            addQuestion()
         })
     })
 }
@@ -66,5 +71,4 @@ function checkAnswer() {
 
 
 addQuestion()
-checkAnswer()
 displayScore()
