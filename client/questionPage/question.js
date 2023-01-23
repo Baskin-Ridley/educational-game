@@ -13,46 +13,53 @@ function displayScore() {
     document.getElementById('scoreDisplay').innerText = score
 }
 
+
+
 function addQuestion() {
-    
-    const card = document.createElement('div')
-    card.classList.add('card')
-    card.classList.add('question')
+    fetch('http://localhost:3000/questions/random')
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            const card = document.createElement('div')
+            card.classList.add('card')
+            card.classList.add('question')
 
-    const question = document.createElement('div')
-    question.classList.add('question')
-    question.innerText = temp[0].question
+            const question = document.createElement('div')
+            question.classList.add('question')
+            question.innerText = data.question
 
-    const answers = document.createElement('div')
-    answers.classList.add('answers')
+            const answers = document.createElement('div')
+            answers.classList.add('answers')
 
-    const answer1 = document.createElement('div')
-    answer1.classList.add('answer')
-    answer1.innerText = temp[0].answers[0]
+            const answer1 = document.createElement('div')
+            answer1.classList.add('answer')
+            answer1.innerText = data.answers[0].text
 
-    const answer2 = document.createElement('div')
-    answer2.classList.add('answer')
-    answer2.innerText = temp[0].answers[1]
+            const answer2 = document.createElement('div')
+            answer2.classList.add('answer')
+            answer2.innerText = data.answers[1].text
 
-    const answer3 = document.createElement('div')
-    answer3.classList.add('answer')
-    answer3.innerText = temp[0].answers[2]
+            const answer3 = document.createElement('div')
+            answer3.classList.add('answer')
+            answer3.innerText = data.answers[2].text
 
-    const answer4 = document.createElement('div')
-    answer4.classList.add('answer')
-    answer4.innerText = temp[0].answers[3]
+            const answer4 = document.createElement('div')
+            answer4.classList.add('answer')
+            answer4.innerText = data.answers[3].text
 
-    answers.appendChild(answer1)
-    answers.appendChild(answer2)
-    answers.appendChild(answer3)
-    answers.appendChild(answer4)
+            answers.appendChild(answer1)
+            answers.appendChild(answer2)
+            answers.appendChild(answer3)
+            answers.appendChild(answer4)
 
-    card.appendChild(question)
-    card.appendChild(answers)
+            card.appendChild(question)
+            card.appendChild(answers)
 
-    document.getElementById('question').appendChild(card)
-
+            document.getElementById('question').appendChild(card)
+        })
+        .catch(error => console.log(error))
 }
+
 
 
 function checkAnswer() {
