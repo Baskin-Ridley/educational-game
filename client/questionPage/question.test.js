@@ -11,11 +11,9 @@
 const {addQuestion, checkAnswer, displayScore} = require('./question')
 
 describe("addQuestion", () => {
-
     it("exists",() => {
         expect(addQuestion).toBeDefined();
     })
-
 })
 
 describe("checkAnswer", () => {
@@ -29,8 +27,16 @@ describe("checkAnswer", () => {
 
 describe("displayScore", () => {
 
+    const html = fs.readFileSync(path.resolve(__dirname, './questionPage.html'), 'utf8');
+
     it("exists",() => {
         expect(displayScore).toBeDefined();
+    })
+
+    it("displays the score", () => {
+        document.documentElement.innerHTML = html.toString();
+        displayScore()
+        expect(document.getElementById('scoreDisplay').innerHTML).toBe('0')
     })
 
 }
