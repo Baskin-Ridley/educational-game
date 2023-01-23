@@ -22,7 +22,9 @@ const questions = [
         "category": "English"
     }
 ];
-module.exports = questions;
+
+let nextId = 3;
+module.exports = {questions, nextId};
 
 
 /* 

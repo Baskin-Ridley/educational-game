@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const logger = require("./logger");
-const questions = require("./questions"); 
+let {questions, nextId} = require("./questions"); 
 
 const app = express();
 
@@ -15,7 +15,12 @@ app.get('/', (req, res) => {
 })
 
 app.get('/questions', (req, res) => {
-    res.json(questions);
+    const {category} = req.query;
+    if (category) {
+        res.json(questions.filter(q => q["category"] === category));
+    } else {
+        res.json(questions);
+    }
 })
 
 app.get('/questions/:id', (req, res) => {
@@ -33,6 +38,8 @@ app.get('/questions/:id', (req, res) => {
 
 app.post("/questions", (req, res) => {
     const newQ = req.body; 
+    newQ["id"] = nextId;
+    nextId++;
 
     questions.push(newQ);
 
