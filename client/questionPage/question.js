@@ -77,5 +77,6 @@ displayScore()
 module.exports = {
     checkAnswer,
     addQuestion,
-    displayScore
+    displayScore,
+    score
 };

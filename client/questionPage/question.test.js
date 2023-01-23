@@ -8,7 +8,7 @@
  
  fetchMock.enableMocks();
 
-const {addQuestion, checkAnswer, displayScore} = require('./question')
+let {addQuestion, checkAnswer, displayScore, score} = require('./question')
 
 describe("addQuestion", () => {
     it("exists",() => {
@@ -38,7 +38,13 @@ describe("displayScore", () => {
         displayScore()
         expect(document.getElementById('scoreDisplay').innerHTML).toBe('0')
     })
-
+    it("displays the new score when updated", () => {
+        document.documentElement.innerHTML = html.toString();
+        expect(document.getElementById('scoreDisplay').innerHTML).toBe('0')
+        score++
+        displayScore()
+        expect(document.getElementById('scoreDisplay').innerHTML).toBe('1')
+    })
 }
 )
 
