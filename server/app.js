@@ -51,4 +51,22 @@ app.post("/questions", (req, res) => {
     res.status(201).send(newQ);
 })
 
+app.delete("/questions/:id", (req, res)=>{
+    const id = req.params["id"];
+
+    const exists = questions.filter(q => q["id"] == id).length==1;
+    if(exists) {
+        questions = questions.filter(q=>q["id"]!=id);
+        res.sendStatus(204);
+    } else {
+        res.status(404).json({
+            error: "No such question!"
+        });
+    }
+})
+
+/*
+update
+*/
+
 module.exports = app;
