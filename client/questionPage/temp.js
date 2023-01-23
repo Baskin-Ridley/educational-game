@@ -2,7 +2,7 @@ let temp = [
     {
         "id": 1,
         "question": "Who's that pokemon? (hint: it's a Jigglypuff)",
-        "answers": ["1", "2", "3", "4"],
+        "answers": ["Voltorb", "Pokeball", "Electrode", "A jigglypuff seen from above"],
         "correct": "3"
         }
     ]
