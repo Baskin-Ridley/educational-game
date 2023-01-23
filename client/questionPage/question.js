@@ -19,7 +19,6 @@ function addQuestion() {
     fetch('http://localhost:3000/questions/random')
         .then(response => response.json())
         .then(data => {
-            console.log(data)
             const card = document.createElement('div')
             card.classList.add('card')
             card.classList.add('question')
@@ -31,26 +30,15 @@ function addQuestion() {
             const answers = document.createElement('div')
             answers.classList.add('answers')
 
-            const answer1 = document.createElement('div')
-            answer1.classList.add('answer')
-            answer1.innerText = data.answers[0].text
-
-            const answer2 = document.createElement('div')
-            answer2.classList.add('answer')
-            answer2.innerText = data.answers[1].text
-
-            const answer3 = document.createElement('div')
-            answer3.classList.add('answer')
-            answer3.innerText = data.answers[2].text
-
-            const answer4 = document.createElement('div')
-            answer4.classList.add('answer')
-            answer4.innerText = data.answers[3].text
-
-            answers.appendChild(answer1)
-            answers.appendChild(answer2)
-            answers.appendChild(answer3)
-            answers.appendChild(answer4)
+            data.answers.forEach(answer => {
+                const ans = document.createElement('div')
+                ans.classList.add('answer')
+                ans.innerText = answer.text
+                if (answer.correct) {
+                    ans.classList.add('correct-answer')
+                }
+                answers.appendChild(ans)
+            });
 
             card.appendChild(question)
             card.appendChild(answers)
@@ -66,7 +54,7 @@ function checkAnswer() {
     const answers = document.querySelectorAll('.answer')
     answers.forEach(answer => {
         answer.addEventListener('click', e => {
-            if (e.target.innerText === temp[0].correct) {
+            if (e.target.innerText.includes("true")) {
                 score++
                 displayScore()
                 console.log(score)
@@ -74,6 +62,7 @@ function checkAnswer() {
         })
     })
 }
+
 
 
 addQuestion()
