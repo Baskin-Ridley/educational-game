@@ -10,7 +10,10 @@ let temp = [
 let score = 0
 
 function displayScore() {
-    document.getElementById('scoreDisplay').innerText = score
+    let scoreDisplay = document.getElementById('scoreDisplay');
+    if(scoreDisplay){
+        scoreDisplay.innerText = score;
+    }
 }
 
 function addQuestion() {
@@ -71,4 +74,8 @@ function checkAnswer() {
 addQuestion()
 displayScore()
 
-module.exports = {addQuestion, checkAnswer, displayScore}
+module.exports = {
+    checkAnswer,
+    addQuestion,
+    displayScore
+};
