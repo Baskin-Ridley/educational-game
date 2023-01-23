@@ -44,7 +44,7 @@ function addQuestion() {
             card.appendChild(answers)
 
             document.getElementById('question').appendChild(card)
-            
+
             checkAnswer()
 
         })
@@ -63,6 +63,8 @@ function checkAnswer() {
                 console.log(score)
             }
             console.log("hello")
+            document.getElementById("question").innerHTML = "";
+
             addQuestion()
         })
     })
