@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const logger = require("./logger");
-let {questions, nextId} = require("./questions"); 
+let { questions, nextId } = require("./questions");
 
 const app = express();
 
@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 })
 
 app.get('/questions', (req, res) => {
-    const {category} = req.query;
+    const { category } = req.query;
     if (category) {
         res.json(questions.filter(q => q["category"] === category));
     } else {
@@ -24,7 +24,7 @@ app.get('/questions', (req, res) => {
 })
 
 app.get('/questions/random', (req, res) => {
-    const rand = Math.floor(Math.random()*questions.length);
+    const rand = Math.floor(Math.random() * questions.length);
     res.send(questions[rand]);
 })
 
@@ -32,17 +32,15 @@ app.get('/questions/:id', (req, res) => {
     const id = req.params.id;
     const question = questions.filter(q => q["id"] == id)[0];
 
-    if(question) {
+    if (question) {
         res.json(question);
     } else {
-        res.status(404).json({
-            error: "No such question!"
-        });
+        res.sendStatus(404);
     }
 })
 
 app.post("/questions", (req, res) => {
-    const newQ = req.body; 
+    const newQ = req.body;
     newQ["id"] = nextId;
     nextId++;
 
@@ -51,39 +49,31 @@ app.post("/questions", (req, res) => {
     res.status(201).send(newQ);
 })
 
-app.delete("/questions/:id", (req, res)=>{
+app.delete("/questions/:id", (req, res) => {
     const id = req.params["id"];
 
-    const exists = questions.filter(q => q["id"] == id).length==1;
-    if(exists) {
-        questions = questions.filter(q=>q["id"]!=id);
+    const exists = questions.filter(q => q["id"] == id).length == 1;
+    if (exists) {
+        questions = questions.filter(q => q["id"] != id);
         res.sendStatus(204);
     } else {
-        res.status(404).json({
-            error: "No such question!"
-        });
+        res.sendStatus(404);
     }
 })
 
-app.patch("/questions/:id", (req, res)=>{
+app.patch("/questions/:id", (req, res) => {
     const id = req.params["id"];
     const changes = req.body;
-    console.log(changes);
 
-    let oldQuestion = questions.filter(q => q["id"] == id);
-    if(oldQuestion.length==0){res.status(404).json({error:"No such question!"})};
-    
-    let changedQ = oldQuestion;
-    if (changes.question){changedQ[0].question=changes.question;console.log("Q CHANGE");}
-    if (changes.answers){changedQ[0].answers=changes.answers}
-    if (changes.category){changedQ[0].category=changes.category}
-    console.log(changedQ);
-    res.send(changedQ);
+    let QIndex = questions.findIndex(x => x.id == id);
+
+    if (QIndex == -1) { res.sendStatus(404); return; };
+
+    if (changes.question) { questions[QIndex].question = changes.question };
+    if (changes.answers)  { questions[QIndex].answers = changes.answers };
+    if (changes.category) { questions[QIndex].category = changes.category };
+    res.send(questions[QIndex]);
 
 })
-
-/*
-update
-*/
 
 module.exports = app;
