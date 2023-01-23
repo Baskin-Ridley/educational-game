@@ -12,3 +12,10 @@ document.getElementById(leaderBoard).addEventListener("click", leaderBoard);
 function leaderBoard() {
     window.location.href="test-page.html";
 }
+
+
+module.exports = {
+    gameOne,
+    userRecord,
+    leaderBoard
+}
