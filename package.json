@@ -6,8 +6,8 @@
     "supertest": "^6.3.3"
   },
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon -L index.js",
+    "start": "node server/index.js",
+    "dev": "nodemon -L server/index.js",
     "test": "jest"
   },
   "dependencies": {

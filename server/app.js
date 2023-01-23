@@ -23,6 +23,11 @@ app.get('/questions', (req, res) => {
     }
 })
 
+app.get('/questions/random', (req, res) => {
+    const rand = Math.floor(Math.random()*questions.length);
+    res.send(questions[rand]);
+})
+
 app.get('/questions/:id', (req, res) => {
     const id = req.params.id;
     const question = questions.filter(q => q["id"] == id)[0];
