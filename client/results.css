@@ -7,10 +7,21 @@ h1 {
     background-color: lightgrey;
     width: 500px;
     height: 400px;
-    /* border: 1px solid black; */
+    
     display: flex;
     justify-content: center;
     align-items: center;
     margin: auto;
     border-radius: 50px;
 }
+    button {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 400px;
+        height: 146px;
+        border-radius: 50px;
+        margin: auto;
+    
+    }
+    
