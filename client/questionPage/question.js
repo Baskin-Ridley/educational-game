@@ -1,14 +1,14 @@
-
 let temp = [
     {
         "id": 1,
         "question": "Who's that pokemon? (hint: it's a Jigglypuff)",
-        "answers": ["1", "2", "3", "4"],
-        "correct": "3"
+        "answers": ["Voltorb", "Pokeball", "Electrode", "A jigglypuff seen from above"],
+        "correct": "A jigglypuff seen from above"
         }
     ]
 
-console.log(temp)
+let score = 0
+
 
 function addQuestion() {
     
@@ -52,4 +52,18 @@ function addQuestion() {
 }
 
 
+function checkAnswer() {
+    const answers = document.querySelectorAll('.answer')
+    answers.forEach(answer => {
+        answer.addEventListener('click', e => {
+            if (e.target.innerText === temp[0].correct) {
+                score++
+                console.log(score)
+            }
+        })
+    })
+}
+
+
 addQuestion()
+checkAnswer()
