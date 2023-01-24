@@ -92,7 +92,7 @@ function checkAnswer() {
 }
 
 function navigateToResults() { 
-    window.location.href = "https://google.com";
+    window.location.href = "../../client/resultPage/results.html";
 }
 
 addQuestion()
