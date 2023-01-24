@@ -41,4 +41,43 @@ function makeQuestionCard(q){
 
     qList.appendChild(card);
 }
+
+document.querySelector("form").addEventListener("submit", (e)=>{
+    e.preventDefault();
+
+    const newQ = {
+        question: e.target.question.value,
+        answers: [
+            {text: e.target.answer1.value,
+            correct: e.target.isCorrect1.checked},
+            {text: e.target.answer2.value,
+            correct: e.target.isCorrect2.checked},
+            {text: e.target.answer3.value,
+            correct: e.target.isCorrect3.checked},
+            {text: e.target.answer4.value,
+            correct: e.target.isCorrect4.checked},
+
+        ],
+        category: e.target.category.value,
+    };
+
+    const options = {
+        method: "POST",
+        body: JSON.stringify(newQ),
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        }
+    }
+
+    fetch("http://localhost:3000/questions", options)
+        .then(res=>res.json())
+        .then(data => makeQuestionCard(data))
+        .catch(err => {
+            console.log(err);
+            alert("Something went wrong!");
+        })
+
+})
+
 getQuestions();
