@@ -102,5 +102,8 @@ module.exports = {
     checkAnswer,
     addQuestion,
     displayScore,
-    score
+    navigateToResults,
+    displayQuestionNumber,
+    score,
+    questionNumber
 };
