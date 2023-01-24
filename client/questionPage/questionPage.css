@@ -2,11 +2,27 @@ body {
     
 }
 
+questionContainer{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+#questionNumberContainer{
+    display:flex
+}
+
+#questionNumberContainer>p{
+    margin: 0;
+    padding: 0;
+    color: grey;
+}
+
+
 #question {
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .question {
