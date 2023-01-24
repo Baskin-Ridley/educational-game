@@ -1,4 +1,5 @@
 const score = require("./question.js");
+console.log(score);
 
 document.querySelector("#retry").addEventListener("click", qPage);
 function qPage() {
@@ -19,5 +20,10 @@ function displayScore () {
 }
 
 displayScore()
-
+module.exports = {
+    qPage,
+    hPage,
+    lPage,
+    displayScore
+}
 

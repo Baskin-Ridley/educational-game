@@ -10,7 +10,7 @@ let temp = [
 let score = 0
 
 function displayScore() {
-    let scoreDisplay = document.getElementById('scoreDisplay');
+    const scoreDisplay = document.getElementById('scoreDisplay');
     if(scoreDisplay){
         scoreDisplay.innerText = score;
     }
