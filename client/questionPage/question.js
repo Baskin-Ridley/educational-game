@@ -99,7 +99,7 @@ function navigateToResults() {
 
     window.location.href = `../../client/resultPage/results.html?score=${score}`;
 
-
+}
 addQuestion()
 displayScore()
 

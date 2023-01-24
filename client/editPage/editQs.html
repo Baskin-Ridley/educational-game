@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Questions</title>
+    <script src="./editQs.js" defer></script>
+    <link rel="stylesheet" href="./editQs.css">
+</head>
+<body>
+    <form>
+        <label for="question">Question:</label>
+        <input type="text" name="question" id="question" required>
+        
+        <div id="answers">
+        <div>
+            <input type="text" name="answer" id="answer1" required>
+            <input type="checkbox" name="isCorrect" id="answer1c">
+        </div>
+
+        <div>
+            <input type="text" name="answer" id="answer2" required>
+            <input type="checkbox" name="isCorrect" id="answer2c">
+        </div>
+        
+        <div>
+            <input type="text" name="answer" id="answer3" required>
+            <input type="checkbox" name="isCorrect" id="answer3c">
+        </div>
+
+        <div>
+            <input type="text" name="answer" id="answer4" required>
+            <input type="checkbox" name="isCorrect" id="answer4c">
+        </div>
+        </div>
+        
+        <!--make the below a dropdown-->
+        <label for="category">Category:</label>
+        <input type="text" name="category" id="category" required>
+        
+        <input type="submit" id="addQ" value="Add Question">
+    </form>
+
+    <section id="qList">
+
+    </section>
+</body>
+</html>
