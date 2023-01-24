@@ -46,12 +46,12 @@ app.post("/questions", (req, res) => {
     if(!newQ["id"]){
         newQ["id"] = pickID(questions.length+1);
         questions.push(newQ);
-        res.status(201).send(questions);
+        res.status(201).send(newQ);
     } else {
         const check = questions.findIndex(x=>x["id"]==newQ["id"]);
         if(check==-1){
             questions.push(newQ);
-            res.status(201).send(questions);
+            res.status(201).send(newQ);
         } else {
             res.status(400).send("That id is already in use.")
         }
