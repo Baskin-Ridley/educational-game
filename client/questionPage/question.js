@@ -11,11 +11,11 @@ let score = 0
 let clickable = true
 
 function displayScore() {
-<<<<<<< HEAD:client/questionPage/question.js
+
     let scoreDisplay = document.getElementById('scoreDisplay');
-=======
-    const scoreDisplay = document.getElementById('scoreDisplay');
->>>>>>> cameron:client/question.js
+
+
+
     if(scoreDisplay){
         scoreDisplay.innerText = score;
     }
