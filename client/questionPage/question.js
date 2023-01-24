@@ -12,7 +12,11 @@ let questionNumber = 0
 let clickable = true
 
 function displayScore() {
+
     let scoreDisplay = document.getElementById('scoreDisplay');
+
+
+
     if(scoreDisplay){
         scoreDisplay.innerText = score;
     }

@@ -1,0 +1,49 @@
+h1 {
+    text-align: center;
+}
+
+.box {
+    text-align: center;
+    background-color: lightgrey;
+    width: 500px;
+    height: 400px;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    border-radius: 50px;
+}
+    button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 400px;
+        height: 146px;
+        border-radius: 50px;
+        margin: auto;
+    
+    }
+    #profile, #settings {
+        position: fixed;
+        top: 5px;
+        right: 0;
+    }
+    
+    #settings {
+        top: 40px;
+        right: 0px;
+    }
+    
+    #profile-pic {
+        height: 30px;
+        width: 30px;
+        margin-right: 10px;
+    
+    }
+    
+    #settings-cog {
+        height: 25px;
+        width: 25px;
+        margin-right: 10px;
+    }
