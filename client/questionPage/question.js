@@ -73,7 +73,11 @@ function checkAnswer() {
             if (clickable) {
                 if (e.target.classList.contains('correct-answer')) {
                     score++
+                    e.target.classList.add('correct')
                     displayScore()
+                }
+                else{
+                    e.target.classList.add('incorrect')
                 }
                 clickable = false   
                 setTimeout(() => {
