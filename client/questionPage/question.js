@@ -8,12 +8,19 @@ let temp = [
     ]
 
 let score = 0
+let questionNumber = 0
 let clickable = true
 
 function displayScore() {
     let scoreDisplay = document.getElementById('scoreDisplay');
     if(scoreDisplay){
         scoreDisplay.innerText = score;
+    }
+}
+function displayQuestionNumber() {
+    let questionNumberDisplay = document.getElementById('questionNumberDisplay');
+    if(questionNumberDisplay){
+        questionNumberDisplay.innerText = questionNumber;
     }
 }
 
@@ -69,6 +76,8 @@ function checkAnswer() {
                     document.getElementById("question").innerHTML = "";
                     clickable = true
                     addQuestion();
+                    questionNumber++
+                    displayQuestionNumber()
                 }, 1000); 
             }
         })
