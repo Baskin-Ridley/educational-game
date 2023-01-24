@@ -61,10 +61,8 @@ questionContainer{
 
 .correct {
     background-color: #4CAF50;
-    color: white;
 }
 
 .incorrect{
     background-color: #f44336;
-    color: white;
 }
