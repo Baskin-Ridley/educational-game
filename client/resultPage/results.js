@@ -1,5 +1,5 @@
 
-let score = 0
+const score = require("../questionPage/question.js")
 
 
 

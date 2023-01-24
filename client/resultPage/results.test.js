@@ -4,7 +4,7 @@ const path = require('path');
 
 fetchMock.enableMocks();
 
-const { qPage, hPage, lPage, displayScore } = require("./results");
+const { qPage, hPage, lPage, displayScore } = require("./results").default;
 
 describe("qPage", () => {
     it("exists", () => {
