@@ -1,7 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const logger = require("./logger");
-let { questions, nextId } = require("./questions");
+let questions= require("./questions");
 
 const app = express();
 
@@ -39,15 +39,36 @@ app.get('/questions/:id', (req, res) => {
     }
 })
 
+// If client tries to set an ID, let them do so as long as it's not in use. 
+// Otherwise find the smallest ID that isn't in use and set that
 app.post("/questions", (req, res) => {
     const newQ = req.body;
-    newQ["id"] = nextId;
-    nextId++;
-
-    questions.push(newQ);
-
-    res.status(201).send(newQ);
+    if(!newQ["id"]){
+        newQ["id"] = pickID(questions.length+1);
+        questions.push(newQ);
+        res.status(201).send(questions);
+    } else {
+        const check = questions.findIndex(x=>x["id"]==newQ["id"]);
+        if(check==-1){
+            questions.push(newQ);
+            res.status(201).send(questions);
+        } else {
+            res.status(400).send("That id is already in use.")
+        }
+    }
 })
+
+function pickID(id) {
+    let idExists = true;
+    let tryID = id;
+    while(idExists) {
+        if (questions.findIndex(x=>x["id"]==tryID)==-1){
+            idExists = false;
+            return tryID;
+        }
+        tryID++;
+    }
+}
 
 app.delete("/questions/:id", (req, res) => {
     const id = req.params["id"];
@@ -70,9 +91,9 @@ app.patch("/questions/:id", (req, res) => {
     if (QIndex == -1) { res.sendStatus(404); return; };
 
     if (changes.question) { questions[QIndex].question = changes.question };
-    if (changes.answers)  { questions[QIndex].answers = changes.answers };
+    if (changes.answers)  { questions[QIndex].answers  = changes.answers };
     if (changes.category) { questions[QIndex].category = changes.category };
-    res.send(questions[QIndex]);
+    res.status(200).send(questions[QIndex]);
 
 })
 

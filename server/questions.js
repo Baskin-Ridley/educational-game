@@ -78,8 +78,7 @@ const questions = [
     }
 ];
 
-let nextId = 8;
-module.exports = {questions, nextId};
+module.exports = questions;
 
 
 /* 
@@ -90,7 +89,7 @@ module.exports = {questions, nextId};
         {"text": "", "correct": true},
         {"text": "", "correct": false},
         {"text": "", "correct": false},
-        {"text": "", "correct": false},
+        {"text": "", "correct": false}
     ],
     "category": ""
 } 
