@@ -78,13 +78,18 @@ function checkAnswer() {
                     addQuestion();
                     questionNumber++
                     displayQuestionNumber()
+                    if(questionNumber === 5) {
+                        navigateToResults()
+                    }
                 }, 1000); 
             }
         })
     })
 }
 
-
+function navigateToResults() { 
+    window.location.href = "https://google.com";
+}
 
 addQuestion()
 displayScore()
