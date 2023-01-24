@@ -8,12 +8,23 @@ let temp = [
     ]
 
 let score = 0
+let questionNumber = 0
 let clickable = true
 
 function displayScore() {
+
     let scoreDisplay = document.getElementById('scoreDisplay');
+
+
+
     if(scoreDisplay){
         scoreDisplay.innerText = score;
+    }
+}
+function displayQuestionNumber() {
+    let questionNumberDisplay = document.getElementById('questionNumberDisplay');
+    if(questionNumberDisplay){
+        questionNumberDisplay.innerText = questionNumber;
     }
 }
 
@@ -62,19 +73,31 @@ function checkAnswer() {
             if (clickable) {
                 if (e.target.classList.contains('correct-answer')) {
                     score++
+                    e.target.classList.add('correct')
                     displayScore()
+                }
+                else{
+                    e.target.classList.add('incorrect')
                 }
                 clickable = false   
                 setTimeout(() => {
                     document.getElementById("question").innerHTML = "";
                     clickable = true
                     addQuestion();
+                    questionNumber++
+                    displayQuestionNumber()
+                    if(questionNumber === 5) {
+                        navigateToResults()
+                    }
                 }, 1000); 
             }
         })
     })
 }
 
+function navigateToResults() { 
+
+    window.location.href = `../../client/resultPage/results.html?score=${score}`;
 
 
 addQuestion()
@@ -84,5 +107,8 @@ module.exports = {
     checkAnswer,
     addQuestion,
     displayScore,
-    score
+    navigateToResults,
+    displayQuestionNumber,
+    score,
+    questionNumber
 };
