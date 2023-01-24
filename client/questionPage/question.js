@@ -1,12 +1,3 @@
-let temp = [
-    {
-        "id": 1,
-        "question": "Who's that pokemon? (hint: it's a Jigglypuff)",
-        "answers": ["Voltorb", "Pokeball", "Electrode", "A jigglypuff seen from above"],
-        "correct": "A jigglypuff seen from above"
-        }
-    ]
-
 let score = 0
 let questionNumber = 0
 let clickable = true
@@ -98,7 +89,7 @@ function checkAnswer() {
 function navigateToResults() { 
 
     window.location.href = `../../client/resultPage/results.html?score=${score}`;
-
+}
 
 addQuestion()
 displayScore()
