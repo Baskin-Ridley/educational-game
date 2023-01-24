@@ -73,7 +73,11 @@ function checkAnswer() {
             if (clickable) {
                 if (e.target.classList.contains('correct-answer')) {
                     score++
+                    e.target.classList.add('correct')
                     displayScore()
+                }
+                else{
+                    e.target.classList.add('incorrect')
                 }
                 clickable = false   
                 setTimeout(() => {
@@ -92,8 +96,9 @@ function checkAnswer() {
 }
 
 function navigateToResults() { 
-    window.location.href = "../../client/resultPage/results.html";
-}
+
+    window.location.href = `../../client/resultPage/results.html?score=${score}`;
+
 
 addQuestion()
 displayScore()
