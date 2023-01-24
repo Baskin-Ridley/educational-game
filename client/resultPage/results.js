@@ -1,8 +1,6 @@
-
-const score = require("../questionPage/question.js")
-
-
-
+const queryString = window.location.search;
+console.log(queryString);
+const urlParams = new URLSearchParams(queryString);
 document.querySelector("#retry").addEventListener("click", qPage);
 function qPage() {
     window.location.href="../questionPage/questionPage.html";
@@ -16,18 +14,21 @@ function lPage() {
     window.location.href="../questionPage/questionPage.html";
 }
 function displayScore () {
-    const card = document.createElement("div")
+         const card = document.createElement("div")
+         const score = urlParams.get('score')
+         console.log(score);
     card.textContent = score;
-    document.getElementById('score').appendChild(card)
+    document.getElementById('scores').appendChild(card)
 }
 
 
-displayScore()
-module.exports = {
-    qPage,
-    hPage,
-    lPage,
-    displayScore
 
-}
+ displayScore()
+ module.exports = {
+     qPage,
+     hPage,
+     lPage,
+     displayScore
+
+ }
 
