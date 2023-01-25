@@ -51,10 +51,8 @@ function addQuestion() {
             data.answers.forEach((answer, index) => {
                 const ans = document.createElement('div')
                 ans.classList.add('answer')
-                console.log({index}, symbols.length)
-                console.log("result", index % symbols.length)
-                ans.innerHTML = symbols[index % symbols.length] + " " + answer.text;
-                ans.style.color = colors[index % colors.length];
+                ans.innerHTML = symbols[index] + " " + answer.text;
+                ans.style.color = colors[index];
                 if (answer.correct) {
                     ans.classList.add('correct-answer')
                 }
