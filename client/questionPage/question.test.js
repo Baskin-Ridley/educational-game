@@ -8,6 +8,8 @@
  
  fetchMock.enableMocks();
  
+ const html = fs.readFileSync(path.resolve(__dirname, './questionPage.html'), 'utf8');
+
 let {addQuestion, 
     checkAnswer, 
     displayScore, 
@@ -16,8 +18,6 @@ let {addQuestion,
     score,
     questionNumber} 
     = require('./question')
-
-    const html = fs.readFileSync(path.resolve(__dirname, './questionPage.html'), 'utf8');
 
 
 describe("addQuestion", () => {
@@ -47,7 +47,7 @@ describe("displayScore", () => {
         expect(document.getElementById('scoreDisplay').innerHTML).toBe('0')
     })
     it("displays the new score when updated", () => {
-        document.documentElement.innerHTML = html.toString();
+        document.Element.innerHTML = html.toString();
         expect(document.getElementById('scoreDisplay').innerHTML).toBe('0')
         score++
         displayScore()
