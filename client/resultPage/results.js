@@ -11,7 +11,7 @@ function hPage() {
 }
 document.querySelector("#leader").addEventListener("click", lPage);
 function lPage() {
-    window.location.href="questionPage/questionPage.html";
+    window.location.href="/questionPage/questionPage.html";
 }
 function displayScore () {
         const card = document.createElement("div")
