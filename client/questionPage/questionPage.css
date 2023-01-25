@@ -71,7 +71,7 @@
     transform: scale(1.05);
 }
 
-#correct {
+.correct {
     background-color: #4CAF50;
 }
 
