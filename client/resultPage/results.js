@@ -14,10 +14,11 @@ function lPage() {
     window.location.href="../questionPage/questionPage.html";
 }
 function displayScore () {
-         const card = document.createElement("div")
-         const score = urlParams.get('score')
-         console.log(score);
-    card.textContent = score;
+        const card = document.createElement("div")
+
+        const score = urlParams.get('score')
+        const name = urlParams.get("name")
+        card.textContent = `${name} your score is ${score}`
     document.getElementById('scores').appendChild(card)
 }
 
