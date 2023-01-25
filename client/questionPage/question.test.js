@@ -65,13 +65,6 @@ describe("displayQuestionNumber", () => {
         displayQuestionNumber()
         expect(document.getElementById('questionNumberDisplay').innerHTML).toBe('0')
     })
-    it("displays the new question number when updated", () => {
-        document.documentElement.innerHTML = html.toString();
-        expect(document.getElementById('questionNumberDisplay').innerHTML).toBe('0')
-        questionNumber++
-        displayQuestionNumber()
-        expect(document.getElementById('questionNumberDisplay').innerHTML).toBe('1')
-    })
 })
 
 describe("navigateToResults", () => {

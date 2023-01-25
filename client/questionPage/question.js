@@ -2,12 +2,9 @@ let score = 0
 let questionNumber = 0
 let clickable = true
 
+
 function displayScore() {
-
     let scoreDisplay = document.getElementById('scoreDisplay');
-
-
-
     if(scoreDisplay){
         scoreDisplay.innerText = score;
     }
@@ -15,13 +12,14 @@ function displayScore() {
 
 function setAmountOfQuestions() {
     const urlParams = new URLSearchParams(window.location.search);
-    const questions = urlParams.get("questions");
-
+    let questions = urlParams.get("questions");
+    if(questions == null){
+        questions = 5
+    }
     let amountOfQuestions = document.getElementById('amountOfQuestions');
-        amountOfQuestions.innerText = 
-        "/" +
-        questions;
-    
+    if(amountOfQuestions) {
+        amountOfQuestions.innerText =  "/" + questions;
+    }
 }
 
 function displayQuestionNumber() {
