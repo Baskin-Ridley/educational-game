@@ -1,12 +1,3 @@
-let temp = [
-    {
-        "id": 1,
-        "question": "Who's that pokemon? (hint: it's a Jigglypuff)",
-        "answers": ["Voltorb", "Pokeball", "Electrode", "A jigglypuff seen from above"],
-        "correct": "A jigglypuff seen from above"
-        }
-    ]
-
 let score = 0
 let questionNumber = 0
 let clickable = true
@@ -21,6 +12,18 @@ function displayScore() {
         scoreDisplay.innerText = score;
     }
 }
+
+function setAmountOfQuestions() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const questions = urlParams.get("questions");
+
+    let amountOfQuestions = document.getElementById('amountOfQuestions');
+        amountOfQuestions.innerText = 
+        "/" +
+        questions;
+    
+}
+
 function displayQuestionNumber() {
     let questionNumberDisplay = document.getElementById('questionNumberDisplay');
     if(questionNumberDisplay){
@@ -67,6 +70,9 @@ function addQuestion() {
 
 
 function checkAnswer() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const questions = urlParams.get("questions");
+
     const answers = document.querySelectorAll('.answer')
     answers.forEach(answer => {
         answer.addEventListener('click', e => {
@@ -86,7 +92,7 @@ function checkAnswer() {
                     addQuestion();
                     questionNumber++
                     displayQuestionNumber()
-                    if(questionNumber === 5) {
+                    if(questionNumber == questions) {
                         navigateToResults()
                     }
                 }, 1000); 
@@ -96,10 +102,14 @@ function checkAnswer() {
 }
 
 function navigateToResults() { 
-
-    window.location.href = `../../client/resultPage/results.html?score=${score}`;
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get("name");
+    const category = urlParams.get("category");
+    const questions = urlParams.get("questions");
+    
+    window.location.href = `../../client/resultPage/results.html?score=${score}&name=${name}&category=${category}&questions=${questions}`;
 }
-
+setAmountOfQuestions()
 addQuestion()
 displayScore()
 
