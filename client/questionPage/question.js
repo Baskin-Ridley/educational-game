@@ -12,6 +12,18 @@ function displayScore() {
         scoreDisplay.innerText = score;
     }
 }
+
+function setAmountOfQuestions() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const questions = urlParams.get("questions");
+
+    let amountOfQuestions = document.getElementById('amountOfQuestions');
+        amountOfQuestions.innerText = 
+        "/" +
+        questions;
+    
+}
+
 function displayQuestionNumber() {
     let questionNumberDisplay = document.getElementById('questionNumberDisplay');
     if(questionNumberDisplay){
@@ -58,6 +70,9 @@ function addQuestion() {
 
 
 function checkAnswer() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const questions = urlParams.get("questions");
+
     const answers = document.querySelectorAll('.answer')
     answers.forEach(answer => {
         answer.addEventListener('click', e => {
@@ -77,7 +92,7 @@ function checkAnswer() {
                     addQuestion();
                     questionNumber++
                     displayQuestionNumber()
-                    if(questionNumber === 5) {
+                    if(questionNumber == questions) {
                         navigateToResults()
                     }
                 }, 1000); 
@@ -94,7 +109,7 @@ function navigateToResults() {
     
     window.location.href = `../../client/resultPage/results.html?score=${score}&name=${name}&category=${category}&questions=${questions}`;
 }
-
+setAmountOfQuestions()
 addQuestion()
 displayScore()
 
