@@ -22,7 +22,7 @@ function handleSubmit(e) {
   }
 
   function navigateToAddQuestions() {
-    window.location.href = "../../client/editPage/editQs.html";
+    window.location.href = "/editPage/editQs.html";
 }
 
   module.exports = {
