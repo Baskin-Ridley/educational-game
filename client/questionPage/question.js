@@ -2,12 +2,9 @@ let score = 0
 let questionNumber = 0
 let clickable = true
 
+
 function displayScore() {
-
     let scoreDisplay = document.getElementById('scoreDisplay');
-
-
-
     if(scoreDisplay){
         scoreDisplay.innerText = score;
     }
@@ -15,13 +12,14 @@ function displayScore() {
 
 function setAmountOfQuestions() {
     const urlParams = new URLSearchParams(window.location.search);
-    const questions = urlParams.get("questions");
-
+    let questions = urlParams.get("questions");
+    if(questions == null){
+        questions = 5
+    }
     let amountOfQuestions = document.getElementById('amountOfQuestions');
-        amountOfQuestions.innerText = 
-        "/" +
-        questions;
-    
+    if(amountOfQuestions) {
+        amountOfQuestions.innerText =  "/" + questions;
+    }
 }
 
 function displayQuestionNumber() {
@@ -41,15 +39,22 @@ function addQuestion() {
 
             const question = document.createElement('div')
             question.classList.add('question')
+
             question.innerText = data.question
 
             const answers = document.createElement('div')
             answers.classList.add('answers')
 
-            data.answers.forEach(answer => {
+            const colors = ["Chartreuse", "rebeccapurple", "tomato", "deeppink"]; 
+            const symbols = ["&#x2665;", "&#x2666;", "&#x2660;", "&#x2663;"]; 
+
+            data.answers.forEach((answer, index) => {
                 const ans = document.createElement('div')
                 ans.classList.add('answer')
-                ans.innerText = answer.text
+                console.log({index}, symbols.length)
+                console.log("result", index % symbols.length)
+                ans.innerHTML = symbols[index % symbols.length] + " " + answer.text;
+                ans.style.color = colors[index % colors.length];
                 if (answer.correct) {
                     ans.classList.add('correct-answer')
                 }
