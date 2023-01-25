@@ -11,3 +11,6 @@ function handleSubmit(e) {
   }
   
   document.getElementById("submit").addEventListener("click", handleSubmit);
+  module.exports = {
+    handleSubmit,
+};
