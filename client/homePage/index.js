@@ -5,10 +5,12 @@ function gameOne() {
 }
 
 function userRecord() {
-    window.location.href="/homePage/user-records.html";
+    document.querySelector("#user-record").addEventListener("click", userRecord);
+    window.location.href="/homePage/user-record.html";
 }
 
 function leaderBoard() {
+    document.querySelector("#leader-board").addEventListener("click", leaderBoard);
     window.location.href="/homePage/leaderboard.html";
 }
 
