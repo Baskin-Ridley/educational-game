@@ -21,6 +21,10 @@ function handleSubmit(e) {
     console.log(newUrl)
   }
 
+  function navigateToAddQuestions() {
+    window.location.href = "../../client/editPage/editQs.html";
+}
+
   module.exports = {
     handleSubmit,
 };
