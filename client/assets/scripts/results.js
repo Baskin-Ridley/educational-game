@@ -15,7 +15,7 @@ function hPage() {
     window.location.href="/index.html";
 }
 function lPage() {
-    window.location.href="/questionPage.html";
+    window.location.href="/leaderboard.html";
 }
 function displayScore () {
     const card = document.createElement("div")

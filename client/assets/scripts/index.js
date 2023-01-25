@@ -1,7 +1,7 @@
 const { TestEnvironment } = require("jest-environment-jsdom");
 
 function gameOne() {
-    window.location.href="/test-page.html";
+    window.location.href="/settings.html";
 }
 
 function userRecord() {
