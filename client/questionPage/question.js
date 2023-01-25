@@ -74,8 +74,10 @@ function addQuestion() {
 
 function checkAnswer() {
     const urlParams = new URLSearchParams(window.location.search);
-    const questions = urlParams.get("questions");
-
+    let questions = urlParams.get("questions");
+    if (!questions){
+        questions = 5
+    }
     const answers = document.querySelectorAll('.answer')
     answers.forEach(answer => {
         answer.addEventListener('click', e => {
