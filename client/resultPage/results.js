@@ -4,7 +4,7 @@ let score = 0
 function dispScore (){
 
 
-const score = require("../questionPage/question.js");
+const score = require("/questionPage/question.js");
 console.log(score);
 
 document.querySelector("#retry").addEventListener("click", qPage);
