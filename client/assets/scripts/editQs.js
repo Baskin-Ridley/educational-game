@@ -12,6 +12,7 @@ async function getQuestions(){
 function makeQuestionCard(q){
     const card = document.createElement("div");
     card.classList.add("card");
+    card.id = q.id;
 
     const question = document.createElement("h2");
     question.innerText = q.question;
@@ -35,12 +36,26 @@ function makeQuestionCard(q){
     const category = document.createElement("p");
     category.innerText = q.category;
 
+    const delButton = document.createElement("button");
+    delButton.innerText = "Delete";
+    delButton.classList.add("delete");
+    delButton.onclick = ()=>{
+        fetch(`http://localhost:3000/questions/${q.id}`, {
+            method: "DELETE"
+        }).then(res=>console.log(res));
+        qList.innerHTML = "";
+        getQuestions();
+    }
+
+
     card.appendChild(question);
     card.appendChild(answers);
     card.appendChild(category);
+    card.appendChild(delButton);
 
     qList.appendChild(card);
 }
+
 
 document.querySelector("form").addEventListener("submit", (e)=>{
     e.preventDefault();
