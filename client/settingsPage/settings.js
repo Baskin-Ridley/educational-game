@@ -27,4 +27,5 @@ function handleSubmit(e) {
 
   module.exports = {
     handleSubmit,
+    navigateToAddQuestions
 };
