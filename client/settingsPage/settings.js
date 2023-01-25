@@ -14,7 +14,7 @@ function handleSubmit(e) {
     }
     const category = document.getElementById("category").value;
     const questions = document.getElementById("questions").value;
-    // !! vv might need fixing
+    
     const newUrl = `/questionPage/questionPage.html?name=${name}&category=${category}&questions=${questions}`;
   
     window.location.href = newUrl;
@@ -22,7 +22,7 @@ function handleSubmit(e) {
   }
 
   function navigateToAddQuestions() {
-    window.location.href = "../../client/editPage/editQs.html";
+    window.location.href = "/editPage/editQs.html";
 }
 
   module.exports = {
