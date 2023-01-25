@@ -8,7 +8,7 @@
  
  fetchMock.enableMocks();
  
- const html = fs.readFileSync(path.resolve(__dirname, './questionPage.html'), 'utf8');
+ const html = fs.readFileSync(path.resolve(__dirname, '../client/questionPage.html'), 'utf8');
 
 let {addQuestion, 
     checkAnswer, 
@@ -17,7 +17,7 @@ let {addQuestion,
     navigateToResults,
     score,
     questionNumber} 
-    = require('./question')
+    = require('../client/assets/scripts/question')
 
 
 describe("addQuestion", () => {
