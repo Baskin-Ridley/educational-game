@@ -12,8 +12,8 @@ function displayScore() {
 
 function setAmountOfQuestions() {
     const urlParams = new URLSearchParams(window.location.search);
-    let questions = urlParams.get("questions");
-    if(questions == null){
+    questions = urlParams.get("questions");
+    if(questions == null || questions == undefined){
         questions = 5
     }
     let amountOfQuestions = document.getElementById('amountOfQuestions');
