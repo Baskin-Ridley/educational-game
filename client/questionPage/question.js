@@ -87,8 +87,12 @@ function checkAnswer() {
 }
 
 function navigateToResults() { 
-
-    window.location.href = `../../client/resultPage/results.html?score=${score}`;
+    const urlParams = new URLSearchParams(window.location.search);
+    const name = urlParams.get("name");
+    const category = urlParams.get("category");
+    const questions = urlParams.get("questions");
+    
+    window.location.href = `../../client/resultPage/results.html?score=${score}&name=${name}&category=${category}&questions=${questions}`;
 }
 
 addQuestion()
