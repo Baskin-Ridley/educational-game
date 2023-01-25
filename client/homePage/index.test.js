@@ -9,10 +9,10 @@ fetchMock.enableMocks();
 
 const {gameOne,
     userRecord, 
-    leaderBoard, 
+    leaderBoard,
     heading} 
     = require('./index');
-
+// !! vv might need fixing
 const html = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf-8');
   
 describe("gameOne", () => {

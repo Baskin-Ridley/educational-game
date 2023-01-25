@@ -1,18 +1,17 @@
 const { TestEnvironment } = require("jest-environment-jsdom");
 
 function gameOne() {
-    document.querySelector("#gameOne").addEventListener("click", gameOne);
-    window.location.href="test-page.html";
+    window.location.href="/homePage/test-page.html";
 }
 
 function userRecord() {
     document.querySelector("#user-record").addEventListener("click", userRecord);
-    window.location.href="user-record.html";
+    window.location.href="/homePage/user-record.html";
 }
 
 function leaderBoard() {
     document.querySelector("#leader-board").addEventListener("click", leaderBoard);
-    window.location.href="leaderboard.html";
+    window.location.href="/homePage/leaderboard.html";
 }
 
 function heading() {
