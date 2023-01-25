@@ -39,6 +39,7 @@ function addQuestion() {
 
             const question = document.createElement('div')
             question.classList.add('question')
+
             question.innerText = data.question
 
             const answers = document.createElement('div')
