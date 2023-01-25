@@ -1,6 +1,4 @@
-body {
-    
-}
+
 
 .questionContainer{
     display: flex;
@@ -11,7 +9,6 @@ body {
 #questionNumberContainer{
     display:flex
 }
-
 #questionNumberContainer>p{
     margin: 0;
     padding: 0;
