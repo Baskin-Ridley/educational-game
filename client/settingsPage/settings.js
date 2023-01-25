@@ -1,6 +1,17 @@
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    document.getElementById("submit").addEventListener("click", handleSubmit);
+});
+
+
 function handleSubmit(e) {
-    e.  preventDefault();
-    const name = document.getElementById("name").value;
+    e.preventDefault();
+    if(!document.getElementById("name")){
+        name = "Anonymous"
+    }
+    else{
+        name = document.getElementById("name").value
+    }
     const category = document.getElementById("category").value;
     const questions = document.getElementById("questions").value;
   
@@ -9,5 +20,12 @@ function handleSubmit(e) {
     window.location.href = newUrl;
     console.log(newUrl)
   }
-  
-  document.getElementById("submit").addEventListener("click", handleSubmit);
+
+  function navigateToAddQuestions() {
+    window.location.href = "../../client/editPage/editQs.html";
+}
+
+  module.exports = {
+    handleSubmit,
+    navigateToAddQuestions
+};
