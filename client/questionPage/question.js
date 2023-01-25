@@ -45,10 +45,16 @@ function addQuestion() {
             const answers = document.createElement('div')
             answers.classList.add('answers')
 
-            data.answers.forEach(answer => {
+            const colors = ["Chartreuse", "rebeccapurple", "tomato", "deeppink"]; 
+            const symbols = ["&#x2665;", "&#x2666;", "&#x2660;", "&#x2663;"]; 
+
+            data.answers.forEach((answer, index) => {
                 const ans = document.createElement('div')
                 ans.classList.add('answer')
-                ans.innerText = answer.text
+                console.log({index}, symbols.length)
+                console.log("result", index % symbols.length)
+                ans.innerHTML = symbols[index % symbols.length] + " " + answer.text;
+                ans.style.color = colors[index % colors.length];
                 if (answer.correct) {
                     ans.classList.add('correct-answer')
                 }
