@@ -7,7 +7,7 @@ function gameOne() {
 
 function userRecord() {
     document.querySelector("#userRecord").addEventListener("click", userRecord);
-    window.location.href="user-records.html";
+    window.location.href="test-page.html";
 }
 
 function leaderBoard() {
