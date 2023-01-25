@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const logger = require("./logger");
+const path = require("path");
 let questions= require("./questions");
 
 const app = express();
@@ -8,10 +9,11 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(logger);
-
+//app.use("/", express.static(path.join(__dirname, "..", "client", "homePage")));
+app.use("/", express.static(path.join(__dirname, "..", "client")));
 
 app.get('/', (req, res) => {
-    res.send(`Welcome to the questions API! There are ${questions.length} questions available.`);
+    res.sendFile(path.join(__dirname, "..", "client", "homePage", "index.html"));
 })
 
 app.get('/questions', (req, res) => {

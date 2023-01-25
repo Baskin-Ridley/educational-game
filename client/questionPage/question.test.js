@@ -15,7 +15,7 @@ let {addQuestion,
     navigateToResults,
     score,
     questionNumber} 
-    = require('./question')
+    = require('/questionPage/question')
 
     const html = fs.readFileSync(path.resolve(__dirname, './questionPage.html'), 'utf8');
 

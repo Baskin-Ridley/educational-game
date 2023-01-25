@@ -9,7 +9,7 @@ describe("gameOne", () => {
 })
 
 test('ue jsdom and set URl in this test file', () => {
-    expect(window.location.href).toBe('test-page.html');
+    expect(window.location.href).toBe('/homePage/test-page.html');
 })
  
 
