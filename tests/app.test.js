@@ -81,14 +81,16 @@ describe("POST /questions", () => {
         await request(url).delete(`/questions/${10}`);
     });
     it("should add a question", async () => {
-        const response = await request(url).post("/questions").send(newQuestion);
+        const postres = await request(url).post("/questions").send(newQuestion);
+        const response = await request(url).get("/questions");
         const final = response.body[response.body.length - 1];
-        expect(response.statusCode).toBe(201);
-        expect(final.id).toBe(9);
+        expect(postres.statusCode).toBe(201);
+        expect(final.id).toBe(9); // TODO: this is not the best way to do this bc questions list will change
         expect(final.category).toBe(newQuestion.category);
     });
     it("should create an unused id when not given one", async () => {
-        const response = await request(url).post("/questions").send(newerQ);
+        await request(url).post("/questions").send(newerQ);
+        const response = await request(url).get("/questions");
         const final = response.body[response.body.length-1];
         expect(final.id).toBe(10);
     });
@@ -107,9 +109,7 @@ describe("DELETE /questions/:id", () =>{
         "category": "Test"
     }
     beforeAll(async () => {
-        console.log("HERE");
         await request(url).post("/questions").send(newQuestion);
-        console.log("here");
     });
     it("should delete one item", async()=> {
         const response = await request(url).delete("/questions/666");

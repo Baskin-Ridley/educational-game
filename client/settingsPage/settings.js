@@ -14,8 +14,8 @@ function handleSubmit(e) {
     }
     const category = document.getElementById("category").value;
     const questions = document.getElementById("questions").value;
-  
-    const newUrl = `../../client/questionPage/questionPage.html?name=${name}&category=${category}&questions=${questions}`;
+    // !! vv might need fixing
+    const newUrl = `/questionPage/questionPage.html?name=${name}&category=${category}&questions=${questions}`;
   
     window.location.href = newUrl;
     console.log(newUrl)
