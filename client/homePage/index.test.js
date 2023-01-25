@@ -7,7 +7,13 @@ const path = require('path');
 
 fetchMock.enableMocks();
 
-const {gameOne, userRecord, leaderBoard} = require('./index');
+const {gameOne,
+    userRecord, 
+    leaderBoard, 
+    heading} 
+    = require('./index');
+
+const html = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf-8');
   
 /*
 test('use jsdom and set URl in this test file', () => {
@@ -31,3 +37,17 @@ describe("leaderBoard", () => {
         expect(leaderBoard).toBeDefined();
     })
 })
+
+describe("heading", () => {
+    it("exists", () => {
+        expect(heading).toBeDefined();
+    })
+})
+
+/*
+describe("heading", () => {
+    it("exists", () => {
+        expect(heading).toHaveTextContent('Brain Playground');
+    })
+})
+*/
