@@ -7,6 +7,7 @@
  const path = require('path');
  
  fetchMock.enableMocks();
+ jest.mock("../client/assets/scripts/question")
  
  const html = fs.readFileSync(path.resolve(__dirname, '../client/questionPage.html'), 'utf8');
 
@@ -47,7 +48,7 @@ describe("displayScore", () => {
         expect(document.getElementById('scoreDisplay').innerHTML).toBe('0')
     })
     it("displays the new score when updated", () => {
-        document.Element.innerHTML = html.toString();
+        document.documentElement.innerHTML = html.toString();
         expect(document.getElementById('scoreDisplay').innerHTML).toBe('0')
         score++
         displayScore()
@@ -74,7 +75,7 @@ describe("navigateToResults", () => {
     it("navigates to the results page", () => {
         navigateToResults()
         //temp url
-        expect(window.location.href).toBe("http://google.com/")
+        expect(window.location.href).toBe("http://localhost/results.html")
     })
 
     }
