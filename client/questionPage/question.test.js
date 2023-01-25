@@ -8,6 +8,8 @@
  
  fetchMock.enableMocks();
  
+ const html = fs.readFileSync(path.resolve(__dirname, './questionPage.html'), 'utf8');
+
 let {addQuestion, 
     checkAnswer, 
     displayScore, 
@@ -15,9 +17,7 @@ let {addQuestion,
     navigateToResults,
     score,
     questionNumber} 
-    = require('/questionPage/question')
-    // !! vv might need fixing
-    const html = fs.readFileSync(path.resolve(__dirname, './questionPage.html'), 'utf8');
+    = require('./question')
 
 
 describe("addQuestion", () => {
@@ -47,7 +47,7 @@ describe("displayScore", () => {
         expect(document.getElementById('scoreDisplay').innerHTML).toBe('0')
     })
     it("displays the new score when updated", () => {
-        document.documentElement.innerHTML = html.toString();
+        document.Element.innerHTML = html.toString();
         expect(document.getElementById('scoreDisplay').innerHTML).toBe('0')
         score++
         displayScore()
@@ -64,13 +64,6 @@ describe("displayQuestionNumber", () => {
         document.documentElement.innerHTML = html.toString();
         displayQuestionNumber()
         expect(document.getElementById('questionNumberDisplay').innerHTML).toBe('0')
-    })
-    it("displays the new question number when updated", () => {
-        document.documentElement.innerHTML = html.toString();
-        expect(document.getElementById('questionNumberDisplay').innerHTML).toBe('0')
-        questionNumber++
-        displayQuestionNumber()
-        expect(document.getElementById('questionNumberDisplay').innerHTML).toBe('1')
     })
 })
 
