@@ -20,3 +20,41 @@ async function populateForm(){
     document.querySelector("input[name='isCorrect4']").checked = data.answers[3].correct;
     document.querySelector("input[name='category']").value = data.category;
 }
+
+document.querySelector("form").addEventListener("submit", (e)=>{
+    e.preventDefault();
+
+    const newQ = {
+        question: e.target.question.value,
+        answers: [
+            {text: e.target.answer1.value,
+            correct: e.target.isCorrect1.checked},
+            {text: e.target.answer2.value,
+            correct: e.target.isCorrect2.checked},
+            {text: e.target.answer3.value,
+            correct: e.target.isCorrect3.checked},
+            {text: e.target.answer4.value,
+            correct: e.target.isCorrect4.checked},
+
+        ],
+        category: e.target.category.value,
+    };
+
+    const options = {
+        method: "PATCH",
+        body: JSON.stringify(newQ),
+        headers: {
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        }
+    }
+
+    fetch(url, options)
+        .then(res=>res.json())
+        .then(window.location.href = "/questionList.html")
+        .catch(err => {
+            console.log(err);
+            alert("Something went wrong!");
+        })
+
+})
