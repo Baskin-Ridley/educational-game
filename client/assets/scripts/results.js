@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
 })
 
 function qPage() {
-    window.location.href="/questionPage.html";
+    window.location.href="/settings.html";
 }
 function hPage() {
     window.location.href="/index.html";
