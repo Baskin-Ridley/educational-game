@@ -1,4 +1,9 @@
 body{
+    background-color: azure;
+}
+
+img:hover{
+    cursor: pointer;
 }
 
 h1 {
