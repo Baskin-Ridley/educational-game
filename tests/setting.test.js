@@ -6,12 +6,12 @@
  const fs = require('fs');
  const path = require('path');
  
- const html = fs.readFileSync(path.resolve(__dirname, './settings.html'), 'utf8');
+ const html = fs.readFileSync(path.resolve(__dirname, '../client/settings.html'), 'utf8');
 
 let {
     handleSubmit,
     navigateToAddQuestions
-} = require('./settings')
+} = require('../client/assets/scripts/settings')
 
  fetchMock.enableMocks();
  

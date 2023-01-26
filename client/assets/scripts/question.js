@@ -111,8 +111,8 @@ function navigateToResults() {
     const name = urlParams.get("name");
     const category = urlParams.get("category");
     const questions = urlParams.get("questions");
-    // !! vv might need fixing
-    window.location.href = `/resultPage/results.html?score=${score}&name=${name}&category=${category}&questions=${questions}`;
+    
+    window.location.href = `/results.html?score=${score}&name=${name}&category=${category}&questions=${questions}`;
 }
 setAmountOfQuestions()
 addQuestion()

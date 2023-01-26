@@ -11,9 +11,9 @@ const {gameOne,
     userRecord, 
     leaderBoard,
     heading} 
-    = require('./index');
+    = require('../client/assets/scripts/index');
 // !! vv might need fixing
-const html = fs.readFileSync(path.resolve(__dirname, './index.html'), 'utf-8');
+const html = fs.readFileSync(path.resolve(__dirname, '../client/index.html'), 'utf-8');
   
 describe("gameOne", () => {
     it("exists", () => {
