@@ -1,3 +1,4 @@
+
 const queryString = window.location.search;
 console.log(queryString);
 const urlParams = new URLSearchParams(queryString);
@@ -34,5 +35,4 @@ module.exports = {
     hPage,
     lPage,
     displayScore
-
 }
