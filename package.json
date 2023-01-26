@@ -2,7 +2,7 @@
   "devDependencies": {
     "jest": "^29.3.1",
     "jest-each": "^29.3.1",
-    "jest-environment-jsdom": "^29.3.1",
+    "jest-environment-jsdom": "^29.4.0",
     "jest-fetch-mock": "^3.0.3",
     "nodemon": "^2.0.20",
     "supertest": "^6.3.3"
@@ -10,7 +10,7 @@
   "scripts": {
     "start": "node server/index.js",
     "dev": "nodemon -L server/index.js",
-    "test": "jest"
+    "test": "jest --verbose"
   },
   "dependencies": {
     "cors": "^2.8.5",
