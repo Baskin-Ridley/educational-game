@@ -98,7 +98,19 @@ document.querySelector("form").addEventListener("submit", (e) => {
         .catch(err => {
             console.log(err);
             alert("Something went wrong!");
-        })
+        });
+    
+    e.target.question.value = "";
+    e.target.answer1.value = "";
+    e.target.answer2.value = "";
+    e.target.answer3.value = "";
+    e.target.answer4.value = "";
+    e.target.isCorrect1.checked = false;
+    e.target.isCorrect2.checked = false;
+    e.target.isCorrect3.checked = false;
+    e.target.isCorrect4.checked = false;
+    e.target.category.value = "";
+    
 
 })
 
