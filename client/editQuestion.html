@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit a question</title>
+    <link rel="stylesheet" href="/assets/style/qList.css">
+    <script src="/assets/scripts/qEdit.js" defer></script>
+</head>
+<body>
+    <form>
+        <label for="question">Question:</label>
+        <input type="text" name="question" required>
+        
+        <div id="answers">
+        <div>
+            <input type="text" name="answer1" required>
+            <input type="checkbox" name="isCorrect1">
+        </div>
+
+        <div>
+            <input type="text" name="answer2" required>
+            <input type="checkbox" name="isCorrect2">
+        </div>
+        
+        <div>
+            <input type="text" name="answer3" required>
+            <input type="checkbox" name="isCorrect3">
+        </div>
+
+        <div>
+            <input type="text" name="answer4" required>
+            <input type="checkbox" name="isCorrect4">
+        </div>
+        </div>
+        
+        <label for="category">Category:</label>
+        <input type="text" name="category" required>
+        
+        <input type="submit" id="editQ" value="Edit Question">
+    </form>
+</body>
+</html>

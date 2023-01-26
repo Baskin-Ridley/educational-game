@@ -1,6 +1,8 @@
 const app = require("../server/app");
+const questions = require("../server/questions");
 const request = require("supertest");
 const url = "http://localhost:3000";
+let numQs = questions.length;
 
 describe("GET /questions", () => {
     it("should return an object", async () => {
@@ -55,7 +57,7 @@ describe("GET /questions/:id", () => {
 
 describe("POST /questions", () => {
     const newQuestion = {
-        "id": 9,
+        "id": numQs+2,
         "question": "This is a test",
         "answers": [
             { "text": "Test?", "correct": true },
@@ -76,21 +78,22 @@ describe("POST /questions", () => {
         "category": "Test"
     }
     afterAll(async () => {
-        const response = await request(url).get("/questions");
-        await request(url).delete(`/questions/${9}`);
-        await request(url).delete(`/questions/${10}`);
+        await request(url).delete(`/questions/${numQs+2}`);
+        await request(url).delete(`/questions/${numQs+3}`);
     });
     it("should add a question", async () => {
-        const response = await request(url).post("/questions").send(newQuestion);
+        const postres = await request(url).post("/questions").send(newQuestion);
+        const response = await request(url).get("/questions");
         const final = response.body[response.body.length - 1];
-        expect(response.statusCode).toBe(201);
-        expect(final.id).toBe(9);
+        expect(postres.statusCode).toBe(201);
+        expect(final.id).toBe(numQs+2); 
         expect(final.category).toBe(newQuestion.category);
     });
     it("should create an unused id when not given one", async () => {
-        const response = await request(url).post("/questions").send(newerQ);
+        await request(url).post("/questions").send(newerQ);
+        const response = await request(url).get("/questions");
         const final = response.body[response.body.length-1];
-        expect(final.id).toBe(10);
+        expect(final.id).toBe(numQs+3);
     });
 });
 
@@ -107,9 +110,7 @@ describe("DELETE /questions/:id", () =>{
         "category": "Test"
     }
     beforeAll(async () => {
-        console.log("HERE");
         await request(url).post("/questions").send(newQuestion);
-        console.log("here");
     });
     it("should delete one item", async()=> {
         const response = await request(url).delete("/questions/666");

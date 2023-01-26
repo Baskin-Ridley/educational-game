@@ -12,8 +12,8 @@ function displayScore() {
 
 function setAmountOfQuestions() {
     const urlParams = new URLSearchParams(window.location.search);
-    let questions = urlParams.get("questions");
-    if(questions == null){
+    questions = urlParams.get("questions");
+    if(questions == null || questions == undefined){
         questions = 5
     }
     let amountOfQuestions = document.getElementById('amountOfQuestions');
@@ -51,10 +51,8 @@ function addQuestion() {
             data.answers.forEach((answer, index) => {
                 const ans = document.createElement('div')
                 ans.classList.add('answer')
-                console.log({index}, symbols.length)
-                console.log("result", index % symbols.length)
-                ans.innerHTML = symbols[index % symbols.length] + " " + answer.text;
-                ans.style.color = colors[index % colors.length];
+                ans.innerHTML = symbols[index] + " " + answer.text;
+                ans.style.color = colors[index];
                 if (answer.correct) {
                     ans.classList.add('correct-answer')
                 }
@@ -76,8 +74,10 @@ function addQuestion() {
 
 function checkAnswer() {
     const urlParams = new URLSearchParams(window.location.search);
-    const questions = urlParams.get("questions");
-
+    let questions = urlParams.get("questions");
+    if (!questions){
+        questions = 5
+    }
     const answers = document.querySelectorAll('.answer')
     answers.forEach(answer => {
         answer.addEventListener('click', e => {
@@ -112,7 +112,7 @@ function navigateToResults() {
     const category = urlParams.get("category");
     const questions = urlParams.get("questions");
     
-    window.location.href = `../../client/resultPage/results.html?score=${score}&name=${name}&category=${category}&questions=${questions}`;
+    window.location.href = `/results.html?score=${score}&name=${name}&category=${category}&questions=${questions}`;
 }
 setAmountOfQuestions()
 addQuestion()

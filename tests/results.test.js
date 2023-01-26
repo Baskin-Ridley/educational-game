@@ -12,7 +12,7 @@ const html = fs.readFileSync(path.resolve(__dirname, './results.html'), 'utf8').
 document.documentElement.innerHTML = html
 
 
-const { qPage, hPage, lPage, displayScore } = require("./results");
+const { qPage, hPage, lPage, displayScore } = require("../client/assets/scripts/results");
 
 describe("qPage", () => {
     it("exists", () => {

@@ -10,7 +10,11 @@
   "scripts": {
     "start": "node server/index.js",
     "dev": "nodemon -L server/index.js",
-    "test": "jest --verbose"
+    "test": "jest --environment=jsdom",
+    "gameTest": "jest --verbose index.test.js"
+  },
+  "jest": {
+    "testEnvironment": "jsdom"
   },
   "dependencies": {
     "cors": "^2.8.5",
