@@ -52,11 +52,15 @@ function makeQuestionCard(q) {
         getQuestions();
     }
 
+    const buttonDiv = document.createElement("div");
+    buttonDiv.classList.add("buttons");
+    buttonDiv.appendChild(editButton);
+    buttonDiv.appendChild(delButton);
+
     card.appendChild(question);
     card.appendChild(answers);
     card.appendChild(category);
-    card.appendChild(editButton);
-    card.appendChild(delButton);
+    card.appendChild(buttonDiv);
 
     qList.appendChild(card);
 }
