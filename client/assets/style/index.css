@@ -45,11 +45,18 @@ h1 {
 }
 
 #button {
-    background-color: chartreuse;
     border: 5px;
     border-radius: 20px;
     height: 168px;
-    width: 168px;
+    width: 168px; 
+    position:relative;
+
+}
+
+.buttonOne{
+    background-image: url("/assets/lightning_2607.png");
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 #record-board {
