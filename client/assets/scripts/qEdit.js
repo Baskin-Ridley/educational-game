@@ -1,14 +1,14 @@
 const qId = (new URLSearchParams(window.location.search)).get("id");
-if(qId == null){window.location.href = "/questionList.html"}
+if (qId == null) { window.location.href = "/questionList.html" }
 const url = `http://localhost:3000/questions/${qId}`;
 
 populateForm();
 
-async function populateForm(){
+async function populateForm() {
     const res = await fetch(url);
     const data = await res.json();
     console.log(data);
-    
+
     document.querySelector("input[name='question']").value = data.question;
     document.querySelector("input[name='answer1']").value = data.answers[0].text;
     document.querySelector("input[name='answer2']").value = data.answers[1].text;
@@ -21,7 +21,7 @@ async function populateForm(){
     document.querySelector("input[name='category']").value = data.category;
 }
 
-document.querySelector("form").addEventListener("submit", (e)=>{
+document.querySelector("form").addEventListener("submit", (e) => {
     e.preventDefault();
 
     const newQ = {
@@ -35,7 +35,6 @@ document.querySelector("form").addEventListener("submit", (e)=>{
             correct: e.target.isCorrect3.checked},
             {text: e.target.answer4.value,
             correct: e.target.isCorrect4.checked},
-
         ],
         category: e.target.category.value,
     };
@@ -50,7 +49,7 @@ document.querySelector("form").addEventListener("submit", (e)=>{
     }
 
     fetch(url, options)
-        .then(res=>res.json())
+        .then(res => res.json())
         .then(window.location.href = "/questionList.html")
         .catch(err => {
             console.log(err);

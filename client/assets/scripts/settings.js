@@ -1,31 +1,31 @@
   
-  document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById("submit").addEventListener("click", handleSubmit);
+document.addEventListener("DOMContentLoaded", function() {
+  document.getElementById("submit").addEventListener("click", handleSubmit);
 });
 
 
 function handleSubmit(e) {
-    e.preventDefault();
-    if(!document.getElementById("name")){
-        name = "Anonymous"
-    }
-    else{
-        name = document.getElementById("name").value
-    }
-    const category = document.getElementById("category").value;
-    const questions = document.getElementById("questions").value;
-    
-    const newUrl = `/questionPage.html?name=${name}&category=${category}&questions=${questions}`;
-  
-    window.location.href = newUrl;
-    console.log(newUrl)
+  e.preventDefault();
+  if(!document.getElementById("name")){
+      name = "Anonymous"
   }
+  else{
+      name = document.getElementById("name").value
+  }
+  const category = document.getElementById("category").value;
+  const questions = document.getElementById("questions").value;
+  
+  const newUrl = `/questionPage.html?name=${name}&category=${category}&questions=${questions}`;
 
-  function navigateToAddQuestions() {
-    window.location.href = "/questionList.html";
+  window.location.href = newUrl;
+  console.log(newUrl)
 }
 
-  module.exports = {
-    handleSubmit,
-    navigateToAddQuestions
+function navigateToAddQuestions() {
+  window.location.href = "/questionList.html";
+}
+
+module.exports = {
+  handleSubmit,
+  navigateToAddQuestions
 };

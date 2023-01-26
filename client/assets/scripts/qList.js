@@ -1,6 +1,6 @@
 const qList = document.getElementById("qList");
 
-async function getQuestions(){
+async function getQuestions() {
     const res = await fetch("http://localhost:3000/questions");
     const data = await res.json();
 
@@ -9,10 +9,10 @@ async function getQuestions(){
     });
 }
 
-function makeQuestionCard(q){
+function makeQuestionCard(q) {
     const card = document.createElement("div");
     card.classList.add("card");
-    card.id = "c"+q.id;
+    card.id = "c" + q.id;
 
     const question = document.createElement("h2");
     question.innerText = q.question;
@@ -35,33 +35,33 @@ function makeQuestionCard(q){
 
     const category = document.createElement("p");
     category.innerText = q.category;
-    
+
     const editButton = document.createElement("button");
     editButton.innerText = "Edit";
     editButton.classList.add("edit");
-    editButton.onclick = ()=>{window.location.href = `/editQuestion.html?id=${q.id}`}
-    
+    editButton.onclick = () => { window.location.href = `/editQuestion.html?id=${q.id}` }
+
     const delButton = document.createElement("button");
     delButton.innerText = "Delete";
     delButton.classList.add("delete");
-    delButton.onclick = ()=>{
+    delButton.onclick = () => {
         fetch(`http://localhost:3000/questions/${q.id}`, {
             method: "DELETE"
-        }).then(res=>console.log(res));
+        }).then(res => console.log(res));
         qList.innerHTML = "";
         getQuestions();
     }
-    
+
     card.appendChild(question);
     card.appendChild(answers);
     card.appendChild(category);
     card.appendChild(editButton);
     card.appendChild(delButton);
-    
+
     qList.appendChild(card);
 }
 
-document.querySelector("form").addEventListener("submit", (e)=>{
+document.querySelector("form").addEventListener("submit", (e) => {
     e.preventDefault();
 
     const newQ = {
@@ -74,8 +74,7 @@ document.querySelector("form").addEventListener("submit", (e)=>{
             {text: e.target.answer3.value,
             correct: e.target.isCorrect3.checked},
             {text: e.target.answer4.value,
-            correct: e.target.isCorrect4.checked},
-
+            correct: e.target.isCorrect4.checked}
         ],
         category: e.target.category.value,
     };
@@ -90,7 +89,7 @@ document.querySelector("form").addEventListener("submit", (e)=>{
     }
 
     fetch("http://localhost:3000/questions", options)
-        .then(res=>res.json())
+        .then(res => res.json())
         .then(data => makeQuestionCard(data))
         .catch(err => {
             console.log(err);

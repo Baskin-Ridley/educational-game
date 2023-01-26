@@ -15,10 +15,6 @@ label {
     font-size: small;
 }
 
-/* input[name="answer"] {
-    width: 100%
-} */
-
 #answers {
     margin: 10px 0px;
     display: flex;

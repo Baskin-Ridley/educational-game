@@ -1,6 +1,7 @@
 const queryString = window.location.search;
 console.log(queryString);
 const urlParams = new URLSearchParams(queryString);
+
 // tests won't run unless the below is wrapped like this and I don't know why
 document.addEventListener("DOMContentLoaded", ()=>{
     document.querySelector("#retry").addEventListener("click", qPage);
@@ -8,6 +9,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     document.querySelector("#leader").addEventListener("click", lPage);
     displayScore();
 })
+
 function qPage() {
     window.location.href="/questionPage.html";
 }
@@ -26,7 +28,6 @@ function displayScore () {
     document.getElementById('scores').appendChild(card)
 }
 
-// displayScore()
 
 module.exports = {
     qPage,
