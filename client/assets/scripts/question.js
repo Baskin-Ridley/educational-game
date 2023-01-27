@@ -30,7 +30,7 @@ function displayQuestionNumber() {
 }
 
 function addQuestion() {
-    fetch('http://localhost:3000/questions/random')
+    fetch('/questions/random')
         .then(response => response.json())
         .then(data => {
             const card = document.createElement('div')

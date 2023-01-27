@@ -1,7 +1,7 @@
 const qList = document.getElementById("qList");
 
 async function getQuestions() {
-    const res = await fetch("http://localhost:3000/questions");
+    const res = await fetch("/questions");
     const data = await res.json();
 
     data.forEach(q => {
@@ -45,7 +45,7 @@ function makeQuestionCard(q) {
     delButton.innerText = "Delete";
     delButton.classList.add("delete");
     delButton.onclick = () => {
-        fetch(`http://localhost:3000/questions/${q.id}`, {
+        fetch(`/questions/${q.id}`, {
             method: "DELETE"
         }).then(res => console.log(res));
         qList.innerHTML = "";
@@ -92,7 +92,7 @@ document.querySelector("form").addEventListener("submit", (e) => {
         }
     }
 
-    fetch("http://localhost:3000/questions", options)
+    fetch("/questions", options)
         .then(res => res.json())
         .then(data => makeQuestionCard(data))
         .catch(err => {
