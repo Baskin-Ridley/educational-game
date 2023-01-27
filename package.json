@@ -2,7 +2,7 @@
   "devDependencies": {
     "jest": "^29.3.1",
     "jest-each": "^29.3.1",
-    "jest-environment-jsdom": "^29.3.1",
+    "jest-environment-jsdom": "^29.4.0",
     "jest-fetch-mock": "^3.0.3",
     "nodemon": "^2.0.20",
     "supertest": "^6.3.3"

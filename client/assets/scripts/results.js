@@ -15,10 +15,10 @@ function qPage() {
     window.location.href="/settings.html";
 }
 function hPage() {
-    window.location.href="/index.html";
+    window.location.href="./index.html";
 }
 function lPage() {
-    window.location.href="/leaderboard.html";
+    window.location.href="./leaderboard.html";
 }
 function displayScore () {
     const card = document.createElement("div")
@@ -35,4 +35,5 @@ module.exports = {
     hPage,
     lPage,
     displayScore
+
 }

@@ -1,8 +1,16 @@
-const fetchMock = require("jest-fetch-mock");
+/**
+ * @jest-environment jsdom
+ */
+
 const fs = require('fs');
 const path = require('path');
 
-fetchMock.enableMocks();
+
+const html = fs.readFileSync(path.resolve(__dirname, './results.html'), 'utf8').toString(); 
+
+// Fill the fake document with the right HTML
+document.documentElement.innerHTML = html
+
 
 const { qPage, hPage, lPage, displayScore } = require("../client/assets/scripts/results");
 
