@@ -27,7 +27,7 @@ app.get('/questions', (req, res) => {
 app.get('/questions/random', (req, res) => {
     const {category} = req.query;
     let qs = questions;
-    if(category!=="General"){
+    if(category!=="General" && category!=undefined){
         qs = questions.filter(q => q["category"] === category);
     }
     const rand = Math.floor(Math.random() * qs.length);
