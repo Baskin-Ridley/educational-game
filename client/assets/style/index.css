@@ -1,5 +1,9 @@
 body{
-    background-color: rgb(105, 105, 105);
+    background-color: azure;
+}
+
+img:hover{
+    cursor: pointer;
 }
 
 h1 {
@@ -36,6 +40,10 @@ h1 {
     justify-content: center;
 }
 
+button:hover {
+    box-shadow: 2px 2px 10px #000;
+    cursor: pointer;
+}
 #button-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -45,11 +53,17 @@ h1 {
 }
 
 #button {
-    background-color: chartreuse;
     border: 5px;
     border-radius: 20px;
     height: 168px;
-    width: 168px;
+    width: 168px; 
+    position:relative;
+}
+
+.buttonOne{
+    background-image: url("/assets/lightning_2607.png");
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 
 #record-board {

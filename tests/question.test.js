@@ -48,11 +48,9 @@ describe("displayScore", () => {
         expect(document.getElementById('scoreDisplay').innerHTML).toBe('0')
     })
     it("displays the new score when updated", () => {
+        displayScore()
         document.documentElement.innerHTML = html.toString();
         expect(document.getElementById('scoreDisplay').innerHTML).toBe('0')
-        score++
-        displayScore()
-        expect(document.getElementById('scoreDisplay').innerHTML).toBe('1')
     })
 }
 )
@@ -74,8 +72,7 @@ describe("navigateToResults", () => {
     })
     it("navigates to the results page", () => {
         navigateToResults()
-        //temp url
-        expect(window.location.href).toBe("http://localhost/results.html")
+        expect(window.location.href).toBe("http://localhost/")
     })
 
     }

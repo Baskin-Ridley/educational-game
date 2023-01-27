@@ -2,7 +2,6 @@ let score = 0
 let questionNumber = 0
 let clickable = true
 
-
 function displayScore() {
     let scoreDisplay = document.getElementById('scoreDisplay');
     if(scoreDisplay){
@@ -114,6 +113,7 @@ function navigateToResults() {
     
     window.location.href = `/results.html?score=${score}&name=${name}&category=${category}&questions=${questions}`;
 }
+
 setAmountOfQuestions()
 addQuestion()
 displayScore()

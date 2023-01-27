@@ -1,3 +1,10 @@
+body {
+    background-color: azure;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
 h1 {
     text-align: center;
 }
