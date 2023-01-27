@@ -32,6 +32,7 @@ describe("GET /questions/random", () => {
         let testFlag = false;
         for(let i=0; i<5; i++){
             response = await request(url).get("/questions/random");
+            console.log(i, response.body);
             if (response.body["id"]!=randId){testFlag=true; break;}
         }
         expect(testFlag).toBe(true);
