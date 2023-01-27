@@ -1,8 +1,24 @@
 const qList = document.getElementById("qList");
+const filters = document.querySelectorAll("#filters button")
 
-async function getQuestions() {
-    const res = await fetch("http://localhost:3000/questions");
+async function getQuestions(category) {
+    let res;
+    
+    if(category==='All'){
+        res = await fetch("/questions");
+    }
+    else{
+        res = await fetch(`/questions?category=${category}`);
+    }
     const data = await res.json();
+
+    qList.innerText = "";
+    filters.forEach((b) => {
+        b.className = "";
+    })
+
+    const clicked = document.getElementById(category);
+    clicked.className = "active";
 
     data.forEach(q => {
         makeQuestionCard(q);
@@ -45,11 +61,10 @@ function makeQuestionCard(q) {
     delButton.innerText = "Delete";
     delButton.classList.add("delete");
     delButton.onclick = () => {
-        fetch(`http://localhost:3000/questions/${q.id}`, {
+        fetch(`/questions/${q.id}`, {
             method: "DELETE"
         }).then(res => console.log(res));
-        qList.innerHTML = "";
-        getQuestions();
+        card.style.display = "none";
     }
 
     const buttonDiv = document.createElement("div");
@@ -92,7 +107,7 @@ document.querySelector("form").addEventListener("submit", (e) => {
         }
     }
 
-    fetch("http://localhost:3000/questions", options)
+    fetch("/questions", options)
         .then(res => res.json())
         .then(data => makeQuestionCard(data))
         .catch(err => {
@@ -114,4 +129,4 @@ document.querySelector("form").addEventListener("submit", (e) => {
 
 })
 
-getQuestions();
+getQuestions('All');

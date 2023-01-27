@@ -17,16 +17,21 @@ app.get('/', (req, res) => {
 
 app.get('/questions', (req, res) => {
     const { category } = req.query;
-    if (category) {
-        res.json(questions.filter(q => q["category"] === category));
-    } else {
+    if (category==undefined) {
         res.json(questions);
+    } else {
+        res.json(questions.filter(q => q["category"] === category));
     }
 })
 
 app.get('/questions/random', (req, res) => {
-    const rand = Math.floor(Math.random() * questions.length);
-    res.send(questions[rand]);
+    const {category} = req.query;
+    let qs = questions;
+    if(category!=="General" && category!=undefined){
+        qs = questions.filter(q => q["category"] === category);
+    }
+    const rand = Math.floor(Math.random() * qs.length);
+    res.send(qs[rand]);
 })
 
 app.get('/questions/:id', (req, res) => {

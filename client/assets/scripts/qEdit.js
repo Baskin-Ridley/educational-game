@@ -1,6 +1,6 @@
 const qId = (new URLSearchParams(window.location.search)).get("id");
 if (qId == null) { window.location.href = "/questionList.html" }
-const url = `http://localhost:3000/questions/${qId}`;
+const url = `/questions/${qId}`;
 
 populateForm();
 
