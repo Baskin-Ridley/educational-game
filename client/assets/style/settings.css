@@ -12,9 +12,10 @@ form {
     flex-direction: column;
     align-items: center;
     width: 50%;
-    padding: 20px;
+    padding: 40px;
     border-radius: 5px;
     box-shadow: 0px 0px 10px #ccc;
+    background-color: azure;
 }
 
 .form-group {
@@ -32,12 +33,12 @@ input, select {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
-    border: none;
+    border: 2px solid lightgraye;
     margin-bottom: 10px;
 }
 
 input[type="submit"], button {
-    background-color: #4CAF50;
+    background-color: limegreen;
     color: white;
     padding: 10px 20px;
     border-radius: 5px;
