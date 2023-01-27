@@ -3,7 +3,7 @@ form {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    margin: 50px;
+    margin: 20px;
     padding: 20px;
     background-color: azure;
     border-radius: 10px;
@@ -59,9 +59,37 @@ input[type='submit'] {
 }
 
 
+#filters {
+    display:flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+#filters > button {
+    background-color: lightgray;
+    color: black;
+    padding: 5px 16px;
+    border: 1px solid gray;
+    /* border-radius: 5px; */
+    cursor: pointer;
+}
+#filters > button:first-child {
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+#filters > button:last-child {
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+#filters > button:hover{
+    background-color: darkgrey;
+}
+#filters > .active{
+    background-color: darkgrey;
+}
 
 .card {
-    width: 80%;
+    width: 90%;
     margin: 20px auto;
     padding: 20px;
     background-color: whitesmoke;

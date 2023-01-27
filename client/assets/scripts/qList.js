@@ -1,8 +1,24 @@
 const qList = document.getElementById("qList");
+const filters = document.querySelectorAll("#filters button")
 
-async function getQuestions() {
-    const res = await fetch("/questions");
+async function getQuestions(category) {
+    let res;
+    
+    if(category==='All'){
+        res = await fetch("/questions");
+    }
+    else{
+        res = await fetch(`/questions?category=${category}`);
+    }
     const data = await res.json();
+
+    qList.innerText = "";
+    filters.forEach((b) => {
+        b.className = "";
+    })
+
+    const clicked = document.getElementById(category);
+    clicked.className = "active";
 
     data.forEach(q => {
         makeQuestionCard(q);
@@ -48,8 +64,7 @@ function makeQuestionCard(q) {
         fetch(`/questions/${q.id}`, {
             method: "DELETE"
         }).then(res => console.log(res));
-        qList.innerHTML = "";
-        getQuestions();
+        card.style.display = "none";
     }
 
     const buttonDiv = document.createElement("div");
@@ -114,4 +129,4 @@ document.querySelector("form").addEventListener("submit", (e) => {
 
 })
 
-getQuestions();
+getQuestions('All');

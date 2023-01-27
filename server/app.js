@@ -17,10 +17,10 @@ app.get('/', (req, res) => {
 
 app.get('/questions', (req, res) => {
     const { category } = req.query;
-    if (category) {
-        res.json(questions.filter(q => q["category"] === category));
-    } else {
+    if (category==undefined) {
         res.json(questions);
+    } else {
+        res.json(questions.filter(q => q["category"] === category));
     }
 })
 
