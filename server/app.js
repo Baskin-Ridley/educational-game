@@ -25,8 +25,13 @@ app.get('/questions', (req, res) => {
 })
 
 app.get('/questions/random', (req, res) => {
-    const rand = Math.floor(Math.random() * questions.length);
-    res.send(questions[rand]);
+    const {category} = req.query;
+    let qs = questions;
+    if(category!=="General"){
+        qs = questions.filter(q => q["category"] === category);
+    }
+    const rand = Math.floor(Math.random() * qs.length);
+    res.send(qs[rand]);
 })
 
 app.get('/questions/:id', (req, res) => {

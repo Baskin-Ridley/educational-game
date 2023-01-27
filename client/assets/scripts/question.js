@@ -29,7 +29,8 @@ function displayQuestionNumber() {
 }
 
 function addQuestion() {
-    fetch('/questions/random')
+    const urlParams = new URLSearchParams(window.location.search);
+    fetch(`/questions/random?category=${urlParams.get("category")}`)
         .then(response => response.json())
         .then(data => {
             const card = document.createElement('div')
