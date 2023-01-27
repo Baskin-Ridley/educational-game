@@ -2,7 +2,6 @@ let score = 0
 let questionNumber = 0
 let clickable = true
 
-
 function displayScore() {
     let scoreDisplay = document.getElementById('scoreDisplay');
     if(scoreDisplay){
@@ -30,7 +29,8 @@ function displayQuestionNumber() {
 }
 
 function addQuestion() {
-    fetch('http://localhost:3000/questions/random')
+    const urlParams = new URLSearchParams(window.location.search);
+    fetch(`/questions/random?category=${urlParams.get("category")}`)
         .then(response => response.json())
         .then(data => {
             const card = document.createElement('div')
@@ -114,6 +114,7 @@ function navigateToResults() {
     
     window.location.href = `./results.html?score=${score}&name=${name}&category=${category}&questions=${questions}`;
 }
+
 setAmountOfQuestions()
 addQuestion()
 displayScore()
