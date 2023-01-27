@@ -13,11 +13,11 @@
         <h1>⚡Brain Storm⚡</h1>
         <div class="form-group">
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" placeholder="Enter your name">
+            <input type="text" id="name" name="name" placeholder="Enter your name" required>
         </div>
         <div class="form-group">
             <label for="category">Category:</label>
-            <select id="category" name="category">
+            <select id="category" name="category" required>
                 <option value="General">General</option>
                 <option value="Mathematics">Mathematics</option>
                 <option value="Science">Science</option>
@@ -32,7 +32,7 @@
             name="questions" min="1" 
             max="50" 
             value="5"
-            placeholder="Enter the number of questions">
+            placeholder="Enter the number of questions" required>
         </div>
         <div class="form-group">
             <button type="submit" id="submit">Start Quiz</button>
